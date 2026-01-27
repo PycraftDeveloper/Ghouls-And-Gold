@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Rigidbody rb;
 
@@ -21,6 +21,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float MeleeDamage = 5.0f;
     [SerializeField] private float MeleeAttackFOV = 45.0f; // degrees
+    [SerializeField] private float MeleeCooldown = 0.5f; // seconds
+    private float CurrentMeleeCooldown = -1;
+
+    [Header("Projectile Spell Attack")]
+    [SerializeField] private GameObject ProjectilePrefab;
+
+    [SerializeField] private float ProjectileSpellCooldown = 1.0f; // seconds
+    private float CurrentProjectileSpellCooldown = -1;
+    [SerializeField] private float ProjectileSpeed = 75.0f;
+    [SerializeField] private float ProjectileDamage = 10.0f;
 
     private PlayerInput inputActions;
     private Vector2 MoveAxis;
@@ -40,6 +50,9 @@ public class PlayerMovement : MonoBehaviour
 
         inputActions.Player.Attack.performed += OnAttack;
         inputActions.Player.Attack.canceled += OnAttack;
+
+        inputActions.Player.SpellProjectile.performed += OnFireSpellProjectile;
+        inputActions.Player.SpellProjectile.canceled += OnFireSpellProjectile;
     }
 
     private void OnEnable()
@@ -62,6 +75,9 @@ public class PlayerMovement : MonoBehaviour
 
         inputActions.Player.Attack.performed -= OnAttack;
         inputActions.Player.Attack.canceled -= OnAttack;
+
+        inputActions.Player.SpellProjectile.performed -= OnFireSpellProjectile;
+        inputActions.Player.SpellProjectile.canceled -= OnFireSpellProjectile;
     }
 
     private void Start()
@@ -77,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         PlayerCamera.transform.position = rb.position + CameraOffsetInPlayer;
+        CurrentMeleeCooldown -= Time.deltaTime;
+        CurrentProjectileSpellCooldown -= Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -117,20 +135,36 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext context)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, MeleeDistance);
-
-        foreach (Collider col in hitColliders)
+        if (CurrentMeleeCooldown <= 0)
         {
-            if (col.CompareTag("Enemy"))
-            {
-                Vector3 directionToTarget = (col.transform.position - transform.position).normalized;
-                float angle = Vector3.Angle(PlayerCamera.transform.forward, directionToTarget);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, MeleeDistance);
 
-                if (angle <= MeleeAttackFOV / 2f)
+            foreach (Collider col in hitColliders)
+            {
+                if (col.CompareTag("Enemy"))
                 {
-                    col.GetComponent<Enemy>().DealDamage(MeleeDamage);
+                    Vector3 directionToTarget = (col.transform.position - transform.position).normalized;
+                    float angle = Vector3.Angle(PlayerCamera.transform.forward, directionToTarget);
+
+                    if (angle <= MeleeAttackFOV / 2f)
+                    {
+                        col.GetComponent<Enemy>().DealDamage(MeleeDamage);
+                    }
                 }
             }
+            CurrentMeleeCooldown = MeleeCooldown;
+        }
+    }
+
+    private void OnFireSpellProjectile(InputAction.CallbackContext context)
+    {
+        if (CurrentProjectileSpellCooldown <= 0)
+        {
+            GameObject ProjectileInstance = Instantiate(ProjectilePrefab, transform.position + transform.forward, transform.rotation);
+            ProjectileSpell instance = ProjectileInstance.GetComponent<ProjectileSpell>();
+            instance.PositionDelta = PlayerCamera.transform.forward * ProjectileSpeed;
+            instance.ProjectileDamage = ProjectileDamage;
+            CurrentProjectileSpellCooldown = ProjectileSpellCooldown;
         }
     }
 

@@ -1969,6 +1969,12 @@ MonoBehaviour:
   CameraOffsetInPlayer: {x: 0, y: 0.6, z: 0}
   MeleeDistance: 3
   MeleeDamage: 5
+  MeleeAttackFOV: 45
+  MeleeCooldown: 0.5
+  ProjectilePrefab: {fileID: 369749155185880694, guid: f38af88063ba42a4eb536aad232c5fa7, type: 3}
+  ProjectileSpellCooldown: 1
+  ProjectileSpeed: 75
+  ProjectileDamage: 10
 --- !u!54 &1800876430
 Rigidbody:
   m_ObjectHideFlags: 0
