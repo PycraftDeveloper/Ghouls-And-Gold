@@ -100,12 +100,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 velocity = new Vector3(
+        Vector3 velocity = PlayerCamera.transform.rotation * new Vector3(
             MoveAxis.x * baseMoveSpeed * moveSpeedMult,
-            rb.linearVelocity.y,
+            0,
             MoveAxis.y * baseMoveSpeed * moveSpeedMult
         );
 
-        rb.linearVelocity = velocity;
+        rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
     }
 }

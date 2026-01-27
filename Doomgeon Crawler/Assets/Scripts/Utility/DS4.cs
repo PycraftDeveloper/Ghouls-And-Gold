@@ -17,7 +17,7 @@ public class DS4
     public static Gamepad getController(string layoutFile = null)
     {
         // Read layout from JSON file
-        string layout = File.ReadAllText(layoutFile == null ? "Assets/Scripts/CustomDualShockLayout.json" : layoutFile);
+        string layout = File.ReadAllText(layoutFile == null ? "Assets/Scripts/Utility/CustomDualShockLayout.json" : layoutFile);
 
         // Overwrite the default layout
         InputSystem.RegisterLayoutOverride(layout, "DualSenseGamepadHID2");
@@ -44,7 +44,7 @@ public class DS4
         catch
         {
             gyroZ = null;
-            Debug.LogWarning("This controller does not have this feature.");
+            Debug.LogWarning("This controller does not have gyro..");
         }
 
         try
@@ -54,7 +54,7 @@ public class DS4
         catch
         {
             gyroY = null;
-            Debug.LogWarning("This controller does not have this feature.");
+            Debug.LogWarning("This controller does not have gyro.");
         }
 
         try
@@ -64,7 +64,7 @@ public class DS4
         catch
         {
             gyroX = null;
-            Debug.LogWarning("This controller does not have this feature.");
+            Debug.LogWarning("This controller does not have gyro.");
         }
 
         try
@@ -74,7 +74,7 @@ public class DS4
         catch
         {
             gyroPosZ = null;
-            Debug.LogWarning("This controller does not have this feature.");
+            Debug.LogWarning("This controller does not have gyro.");
         }
     }
 

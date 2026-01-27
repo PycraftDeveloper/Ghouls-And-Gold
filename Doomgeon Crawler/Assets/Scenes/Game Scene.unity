@@ -364,7 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b25d1b2bf7fc1f40a14cfbf3c9ae2d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotationSpeed: 4000
+  GyroRotationSpeed: 4000
+  AxisRotationSpeed: 100
 --- !u!1 &680364710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1742,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800876423}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 6d3f74169a3228a4a961c836f1c5f012, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
