@@ -3,13 +3,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Camera PlayerCamera;
-
     private Rigidbody rb;
+
+    [Header("Player Movement")]
     [SerializeField] private float baseMoveSpeed;
+
     [SerializeField] private float moveSpeedMult;
     [SerializeField] private float jumpForce = 6f;
+
+    [Header("Player Camera")]
+    [SerializeField] private Camera PlayerCamera;
+
     [SerializeField] private Vector3 CameraOffsetInPlayer = new Vector3(0, 1, 0);
+
+    [Header("Melee Attack")]
+    [SerializeField] private float MeleeDistance = 3.0f;
+
+    [SerializeField] private float MeleeDamage = 5.0f;
+    [SerializeField] private float MeleeAttackFOV = 45.0f; // degrees
 
     private PlayerInput inputActions;
     private Vector2 MoveAxis;
@@ -26,6 +37,9 @@ public class PlayerMovement : MonoBehaviour
 
         inputActions.Player.Jump.performed += OnJump;
         inputActions.Player.Jump.canceled += OnJump;
+
+        inputActions.Player.Attack.performed += OnAttack;
+        inputActions.Player.Attack.canceled += OnAttack;
     }
 
     private void OnEnable()
@@ -45,6 +59,9 @@ public class PlayerMovement : MonoBehaviour
 
         inputActions.Player.Jump.performed -= OnJump;
         inputActions.Player.Jump.canceled -= OnJump;
+
+        inputActions.Player.Attack.performed -= OnAttack;
+        inputActions.Player.Attack.canceled -= OnAttack;
     }
 
     private void Start()
@@ -95,6 +112,25 @@ public class PlayerMovement : MonoBehaviour
                 jumpForce,
                 rb.linearVelocity.z
             );
+        }
+    }
+
+    private void OnAttack(InputAction.CallbackContext context)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, MeleeDistance);
+
+        foreach (Collider col in hitColliders)
+        {
+            if (col.CompareTag("Enemy"))
+            {
+                Vector3 directionToTarget = (col.transform.position - transform.position).normalized;
+                float angle = Vector3.Angle(PlayerCamera.transform.forward, directionToTarget);
+
+                if (angle <= MeleeAttackFOV / 2f)
+                {
+                    col.GetComponent<Enemy>().DealDamage(MeleeDamage);
+                }
+            }
         }
     }
 
