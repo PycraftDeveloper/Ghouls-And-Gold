@@ -8,15 +8,15 @@ public class PlayerLook : MonoBehaviour
     private Gamepad controller = null;
     private Transform m_transform;
 
+    public float RotationSpeed = 4000.0f;
 
-    void Start()
+    private void Start()
     {
         this.controller = DS4.getController();
         m_transform = this.transform;
     }
 
-
-    void Update()
+    private void Update()
     {
         if (controller == null)
         {
@@ -35,7 +35,7 @@ public class PlayerLook : MonoBehaviour
             {
                 m_transform.rotation = Quaternion.identity;
             }
-            m_transform.rotation *= DS4.getRotation(4000 * Time.deltaTime);
+            m_transform.rotation *= DS4.getRotation(RotationSpeed * Time.deltaTime);
         }
     }
 }
