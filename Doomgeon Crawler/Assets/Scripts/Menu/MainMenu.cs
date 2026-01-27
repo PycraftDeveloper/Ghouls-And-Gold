@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private GameObject playButton;
-    [SerializeField] private GameObject settingsButton;
+    [SerializeField] private GameObject backButton;
 
     void Start()
     {
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(false);
         settingsMenu.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(settingsButton);
+        EventSystem.current.SetSelectedGameObject(backButton);
     }
 
     public void CloseSettingsMenu()
