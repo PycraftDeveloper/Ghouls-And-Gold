@@ -96,7 +96,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2442255120867004528}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 8f88e0cb174b6c7468ec02d7c24bb321, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 0}
-  baseMoveSpeed: 3
+  baseMoveSpeed: 4
   moveSpeedMult: 1
   jumpForce: 6
   CameraOffsetInPlayer: {x: 0, y: 0.6, z: 0}
