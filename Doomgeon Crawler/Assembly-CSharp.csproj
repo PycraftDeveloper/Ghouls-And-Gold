@@ -63,9 +63,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\Game\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Game\ProjectileSpell.cs" />
+    <Compile Include="Assets\Scripts\Game\Enemy.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerLook.cs" />
     <Compile Include="Assets\Scripts\Utility\DS4.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
