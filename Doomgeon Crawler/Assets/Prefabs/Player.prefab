@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8311049004184301724}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2442255120867004528}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8576a5f737e82c24eaaab865dc02b284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 7
+  baseMoveSpeed: 8
   moveSpeedMult: 1
   jumpForce: 6
   PlayerCamera: {fileID: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
   MeleeDamage: 5
   MeleeAttackFOV: 45
   MeleeCooldown: 0.5
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 369749155185880694, guid: f38af88063ba42a4eb536aad232c5fa7, type: 3}
   ProjectileSpellCooldown: 1
   ProjectileSpeed: 75
   ProjectileDamage: 10
