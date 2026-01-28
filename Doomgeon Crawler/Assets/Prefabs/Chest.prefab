@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2405337156472349081}
   - component: {fileID: 8454611807674171869}
   - component: {fileID: 3824212779205704239}
+  - component: {fileID: 5924432136291253016}
   m_Layer: 0
   m_Name: Chest
   m_TagString: ChestInteractionArea
@@ -122,3 +123,25 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5924432136291253016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512320712383145767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a157e2aa4ba51b245a51ad02d29cad3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GoldItemPrefab: {fileID: 134004600558634213, guid: f54da2e6a35c0a14f9c8088447a76df9, type: 3}
+  HealthItemPrefab: {fileID: 66205680374115499, guid: bb1afe4df80966e46993533b764a0451, type: 3}
+  ManaItemPrefab: {fileID: 5603321589104236524, guid: 027d584274d09fa4a9e27fb562df6152, type: 3}
+  MinNumberOfItemsToDrop: 1
+  MaxNumberOfItemsToDrop: 3
+  GoldDropChance: 0.75
+  HealthDropChance: 0.35
+  ManaDropChance: 0.5
+  MinItemExplodeForce: 1
+  MaxItemExplodeForce: 3

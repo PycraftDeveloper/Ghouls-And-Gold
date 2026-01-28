@@ -187,9 +187,7 @@ public class Player : MonoBehaviour
     {
         if (LocalChest != null)
         {
-            Debug.Log("Chest Opened");
-            LocalChest.tag = "Untagged";
-            LocalChest = null;
+            LocalChest.GetComponent<Chest>().OnOpen();
         }
     }
 

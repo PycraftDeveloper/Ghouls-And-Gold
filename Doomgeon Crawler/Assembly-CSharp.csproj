@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Game\Enemy.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerLook.cs" />
     <Compile Include="Assets\Scripts\Game\CGI\Registry.cs" />
+    <Compile Include="Assets\Scripts\Game\Chest.cs" />
     <Compile Include="Assets\Scripts\Utility\DS4.cs" />
     <Compile Include="Assets\Scripts\Game\Player\Player.cs" />
   </ItemGroup>
