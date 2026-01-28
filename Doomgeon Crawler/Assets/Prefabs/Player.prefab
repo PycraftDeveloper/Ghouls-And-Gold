@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8576a5f737e82c24eaaab865dc02b284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMoveSpeed: 7
+  baseMoveSpeed: 8
   moveSpeedMult: 1
   jumpForce: 6
   PlayerCamera: {fileID: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
   MeleeDamage: 5
   MeleeAttackFOV: 45
   MeleeCooldown: 0.5
-  ProjectilePrefab: {fileID: 0}
+  ProjectilePrefab: {fileID: 369749155185880694, guid: f38af88063ba42a4eb536aad232c5fa7, type: 3}
   ProjectileSpellCooldown: 1
   ProjectileSpeed: 75
   ProjectileDamage: 10
