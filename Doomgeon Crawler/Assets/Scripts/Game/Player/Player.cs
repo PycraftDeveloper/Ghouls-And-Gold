@@ -31,9 +31,18 @@ public class Player : MonoBehaviour
     private float CurrentProjectileSpellCooldown = -1;
     [SerializeField] private float ProjectileSpeed = 75.0f;
     [SerializeField] private float ProjectileDamage = 10.0f;
+    [SerializeField] private float ManaCost = 1.0f;
+
+    [Header("Inventory")]
+    [SerializeField] private int GoldCount = 0;
+
+    [SerializeField] private float ManaCount = 0;
+    [SerializeField] private float HealthPickUpRegenAmount = 3.0f;
 
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
+
+    private GameObject LocalChest = null;
 
     private PlayerInput inputActions;
     private Vector2 MoveAxis;
@@ -56,6 +65,9 @@ public class Player : MonoBehaviour
 
         inputActions.Player.SpellProjectile.performed += OnFireSpellProjectile;
         inputActions.Player.SpellProjectile.canceled += OnFireSpellProjectile;
+
+        inputActions.Player.Interact.performed += OnInteract;
+        inputActions.Player.Interact.canceled += OnInteract;
     }
 
     private void OnEnable()
@@ -81,6 +93,9 @@ public class Player : MonoBehaviour
 
         inputActions.Player.SpellProjectile.performed -= OnFireSpellProjectile;
         inputActions.Player.SpellProjectile.canceled -= OnFireSpellProjectile;
+
+        inputActions.Player.Interact.performed -= OnInteract;
+        inputActions.Player.Interact.canceled -= OnInteract;
     }
 
     private void Start()
@@ -132,9 +147,48 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("ChestInteractionArea"))
+        {
+            LocalChest = other.gameObject;
+        }
+        else if (other.gameObject.CompareTag("GoldPickUp"))
+        {
+            GoldCount++;
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("HealthPickUp"))
+        {
+            Health += HealthPickUpRegenAmount;
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("ManaPickup"))
+        {
+            ManaCount++;
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("ChestInteractionArea"))
+        {
+            LocalChest = null;
+        }
+    }
+
     private void OnMove(InputAction.CallbackContext context)
     {
         MoveAxis = context.ReadValue<Vector2>();
+    }
+
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        if (LocalChest != null)
+        {
+            LocalChest.GetComponent<Chest>().OnOpen();
+        }
     }
 
     private void OnJump(InputAction.CallbackContext context)
@@ -177,8 +231,10 @@ public class Player : MonoBehaviour
 
     private void OnFireSpellProjectile(InputAction.CallbackContext context)
     {
-        if (CurrentProjectileSpellCooldown <= 0)
+        if (CurrentProjectileSpellCooldown <= 0 && ManaCount >= ManaCost)
         {
+            ManaCount -= ManaCost;
+
             GameObject ProjectileInstance = Instantiate(ProjectilePrefab, transform.position + transform.forward, transform.rotation);
             ProjectileSpell instance = ProjectileInstance.GetComponent<ProjectileSpell>();
             instance.PositionDelta = PlayerCamera.transform.forward * ProjectileSpeed;
