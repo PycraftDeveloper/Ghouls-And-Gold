@@ -32,6 +32,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float ProjectileSpeed = 75.0f;
     [SerializeField] private float ProjectileDamage = 10.0f;
 
+    [Header("Misc")]
+    [SerializeField] private float Health = 20.0f;
+
     private PlayerInput inputActions;
     private Vector2 MoveAxis;
     private bool IsGrounded = false;
@@ -95,6 +98,20 @@ public class Player : MonoBehaviour
         PlayerCamera.transform.position = rb.position + CameraOffsetInPlayer;
         CurrentMeleeCooldown -= Time.deltaTime;
         CurrentProjectileSpellCooldown -= Time.deltaTime;
+    }
+
+    public void DealDamage(float Damage)
+    {
+        Health -= Damage;
+
+        if (Health <= 0)
+        {
+            Debug.Log("Player dead");
+        }
+        else
+        {
+            Debug.Log("Player hurt");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
