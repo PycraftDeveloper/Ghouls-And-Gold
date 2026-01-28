@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -15,14 +16,18 @@ public class Enemy : MonoBehaviour
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
 
+    private NavMeshAgent playerAgent;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
+        playerAgent = gameObject.GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
     private void Update()
     {
+        playerAgent.destination = Registry.PlayerObject.transform.position;
         CurrentMeleeCooldown -= Time.deltaTime;
 
         if (CurrentMeleeCooldown <= 0)

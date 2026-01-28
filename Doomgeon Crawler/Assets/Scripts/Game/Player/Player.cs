@@ -85,6 +85,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        Registry.PlayerObject = this;
+
         rb = GetComponent<Rigidbody>();
     }
 
