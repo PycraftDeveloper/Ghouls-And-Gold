@@ -137,21 +137,6 @@ public class Player : MonoBehaviour
         {
             IsGrounded = true;
         }
-        else if (collision.gameObject.CompareTag("GoldPickUp"))
-        {
-            GoldCount++;
-            Destroy(collision.gameObject);
-        }
-        else if (collision.gameObject.CompareTag("HealthPickUp"))
-        {
-            Health += HealthPickUpRegenAmount;
-            Destroy(collision.gameObject);
-        }
-        else if (collision.gameObject.CompareTag("ManaPickup"))
-        {
-            ManaCount++;
-            Destroy(collision.gameObject);
-        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -167,6 +152,21 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("ChestInteractionArea"))
         {
             LocalChest = other.gameObject;
+        }
+        else if (other.gameObject.CompareTag("GoldPickUp"))
+        {
+            GoldCount++;
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("HealthPickUp"))
+        {
+            Health += HealthPickUpRegenAmount;
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("ManaPickup"))
+        {
+            ManaCount++;
+            Destroy(other.gameObject);
         }
     }
 
