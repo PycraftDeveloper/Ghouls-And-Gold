@@ -2,7 +2,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float health = 20.0f;
+    [Header("Melee Attack")]
+    [SerializeField] private float MeleeDistance = 1.5f;
+
+    [SerializeField] private float MeleeDamage = 5.0f;
+
+    //[SerializeField] private float MeleeAttackFOV = 45.0f; // degrees
+    [SerializeField] private float MeleeCooldown = 0.5f; // seconds
+
+    private float CurrentMeleeCooldown = -1;
+
+    [Header("Misc")]
+    [SerializeField] private float Health = 20.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
@@ -12,20 +23,40 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        CurrentMeleeCooldown -= Time.deltaTime;
+
+        if (CurrentMeleeCooldown <= 0)
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, MeleeDistance);
+
+            foreach (Collider col in hitColliders)
+            {
+                if (col.CompareTag("Player"))
+                {
+                    Vector3 directionToTarget = (col.transform.position - transform.position).normalized;
+                    float angle = Vector3.Angle(transform.forward, directionToTarget);
+
+                    col.GetComponent<Player>().DealDamage(MeleeDamage); // attacks on all sides
+
+                    Debug.DrawRay(transform.position, directionToTarget, Color.red, 10.0f);
+                }
+            }
+            CurrentMeleeCooldown = MeleeCooldown;
+        }
     }
 
     public void DealDamage(float Damage)
     {
-        health -= Damage;
+        Health -= Damage;
 
-        if (health <= 0)
+        if (Health <= 0)
         {
-            Debug.Log("I'm dead");
+            Debug.Log("Enemy dead");
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("I'm hurt");
+            Debug.Log("Enemy hurt");
         }
     }
 }
