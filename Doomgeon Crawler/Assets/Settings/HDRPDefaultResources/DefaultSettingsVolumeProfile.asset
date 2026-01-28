@@ -879,7 +879,7 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 13.45
   focusDistanceMode:
     m_OverrideState: 1
     m_Value: 0
@@ -1050,7 +1050,7 @@ MonoBehaviour:
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 400
+    m_Value: 100
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 0
@@ -1812,7 +1812,7 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.2
   xMultiplier:
     m_OverrideState: 1
     m_Value: 1
