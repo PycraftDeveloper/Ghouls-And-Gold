@@ -107,6 +107,8 @@ MonoBehaviour:
   MeleeDistance: 1.5
   MeleeDamage: 5
   MeleeCooldown: 0.5
+  ViewDistance: 50
+  FOV: 90
   Health: 20
 --- !u!65 &8557832465602305255
 BoxCollider:
@@ -139,7 +141,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.6
-  m_Speed: 2
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
