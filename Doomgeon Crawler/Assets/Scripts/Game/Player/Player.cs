@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class Player : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
+
+    [Header("User Interface")]
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider manaBar;
 
     private GameObject LocalChest = null;
     private GameObject LocalLever = null;
@@ -130,6 +135,8 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player hurt");
         }
+
+        UpdateUserInterface();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -255,6 +262,8 @@ public class Player : MonoBehaviour
             instance.PositionDelta = PlayerCamera.transform.forward * ProjectileSpeed;
             instance.ProjectileDamage = ProjectileDamage;
             CurrentProjectileSpellCooldown = ProjectileSpellCooldown;
+
+            UpdateUserInterface();
         }
     }
 
@@ -267,5 +276,11 @@ public class Player : MonoBehaviour
         );
 
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
+    }
+
+    private void UpdateUserInterface()
+    {
+        healthBar.value = Health;
+        manaBar.value = ManaCount;
     }
 }
