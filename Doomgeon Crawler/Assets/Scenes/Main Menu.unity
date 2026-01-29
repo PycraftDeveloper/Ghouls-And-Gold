@@ -1828,7 +1828,7 @@ GameObject:
   - component: {fileID: 1080692123}
   - component: {fileID: 1080692124}
   m_Layer: 5
-  m_Name: Slider (1)
+  m_Name: SFXVolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2054,7 +2054,7 @@ GameObject:
   - component: {fileID: 1179443843}
   - component: {fileID: 1179443844}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: MusicVolumeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
