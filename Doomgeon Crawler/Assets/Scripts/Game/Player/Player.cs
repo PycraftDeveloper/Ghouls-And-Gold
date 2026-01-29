@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float Health = 20.0f;
 
     private GameObject LocalChest = null;
+    private GameObject LocalLever = null;
 
     private PlayerInput inputActions;
     private Vector2 MoveAxis;
@@ -168,6 +169,10 @@ public class Player : MonoBehaviour
             ManaCount++;
             Destroy(other.gameObject);
         }
+        else if (other.gameObject.CompareTag("Lever"))
+        {
+            LocalLever = other.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -175,6 +180,10 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("ChestInteractionArea"))
         {
             LocalChest = null;
+        }
+        else if (other.gameObject.CompareTag("Lever"))
+        {
+            LocalLever = null;
         }
     }
 
@@ -188,6 +197,12 @@ public class Player : MonoBehaviour
         if (LocalChest != null)
         {
             LocalChest.GetComponent<Chest>().OnOpen();
+        }
+
+        if (LocalLever != null)
+        {
+            Debug.Log("InteractedWithLever");
+            LocalLever.GetComponent<Lever>().ChangeLeverState();
         }
     }
 
