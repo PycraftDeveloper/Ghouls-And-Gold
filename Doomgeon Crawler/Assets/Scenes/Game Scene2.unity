@@ -18852,6 +18852,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 504238828}
   m_LocalEulerAnglesHint: {x: 0, y: -540, z: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &431038552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431038553}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &431038553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431038552}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5, y: 2, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 82314626}
+  - {fileID: 1193227711}
+  - {fileID: 91180190}
+  - {fileID: 1997359398}
+  - {fileID: 1406278849}
+  - {fileID: 632091606}
+  - {fileID: 114199491}
+  - {fileID: 1998224444}
+  - {fileID: 1641216836}
+  - {fileID: 2001375592}
+  - {fileID: 1313340503}
+  - {fileID: 624327944}
+  - {fileID: 1822376504}
+  - {fileID: 360028202}
+  - {fileID: 1172688889}
+  - {fileID: 1471400546}
+  - {fileID: 965219196}
+  - {fileID: 146480995}
+  - {fileID: 2107505461}
+  - {fileID: 780671921}
+  - {fileID: 1170114434}
+  - {fileID: 1607811278}
+  - {fileID: 1063097207}
+  - {fileID: 1456976208}
+  - {fileID: 1431954700}
+  - {fileID: 973823085}
+  - {fileID: 499030969}
+  - {fileID: 647275309}
+  - {fileID: 1323576102}
+  - {fileID: 946077238}
+  - {fileID: 1220437500}
+  m_Father: {fileID: 1380281998}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!43 &439481863
 Mesh:
   m_ObjectHideFlags: 0
@@ -78964,6 +79029,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6867492292741196252, guid: 136e60c9735e5e44da4bc17540624d0e, type: 3}
   m_PrefabInstance: {fileID: 1854498467}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!1001 &1866539259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79021,6 +79087,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe286d09bdce0ec408ebb75095969d8a, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1 &1878976058
 GameObject:
   m_ObjectHideFlags: 0
