@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
         {
             ManaCount -= ManaCost;
 
-            GameObject ProjectileInstance = Instantiate(ProjectilePrefab, transform.position + -PlayerCamera.transform.right / 1.5f, transform.rotation);
+            GameObject ProjectileInstance = Instantiate(ProjectilePrefab, transform.position + -PlayerCamera.transform.right, transform.rotation);
             ProjectileSpell instance = ProjectileInstance.GetComponent<ProjectileSpell>();
             instance.PositionDelta = PlayerCamera.transform.forward * ProjectileSpeed;
             instance.ProjectileDamage = ProjectileDamage;
