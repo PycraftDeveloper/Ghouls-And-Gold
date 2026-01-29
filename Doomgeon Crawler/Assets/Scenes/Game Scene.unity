@@ -1919,6 +1919,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8576a5f737e82c24eaaab865dc02b284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HurtSounds:
+  - {fileID: 8300000, guid: e1cbeb273ac6a664c89526e171fc9314, type: 3}
+  HurtAmplitude: 1
+  HurtPitchRange: 0.15
+  DeathSounds:
+  - {fileID: 8300000, guid: a1571f57d410b43449f8d009efeb40c8, type: 3}
+  DeathAmplitude: 1
+  DeathPitchRange: 0.15
+  GoldPickupSounds:
+  - {fileID: 8300000, guid: af35abb95842372449be320a912c9f07, type: 3}
+  GoldPickUpAmplitude: 1
+  GoldPickUpPitchRange: 0.15
   baseMoveSpeed: 3
   moveSpeedMult: 1
   jumpForce: 6
@@ -1937,6 +1949,8 @@ MonoBehaviour:
   ManaCount: 0
   HealthPickUpRegenAmount: 3
   Health: 20
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
 --- !u!54 &1800876430
 Rigidbody:
   m_ObjectHideFlags: 0

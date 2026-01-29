@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -5,6 +6,24 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     private Rigidbody rb;
+
+    [Header("Hurt SFX")]
+    public List<AudioClip> HurtSounds;
+
+    [Range(0, 1.0f)] public float HurtAmplitude = 1.0f;
+    [Range(0.0f, 0.15f)] public float HurtPitchRange;
+
+    [Header("Death SFX")]
+    public List<AudioClip> DeathSounds;
+
+    [Range(0, 1.0f)] public float DeathAmplitude = 1.0f;
+    [Range(0.0f, 0.15f)] public float DeathPitchRange;
+
+    [Header("Gold Pickup SFX")]
+    public List<AudioClip> GoldPickupSounds;
+
+    [Range(0, 1.0f)] public float GoldPickUpAmplitude = 1.0f;
+    [Range(0.0f, 0.15f)] public float GoldPickUpPitchRange;
 
     [Header("Player Movement")]
     [SerializeField] private float baseMoveSpeed;
@@ -45,6 +64,7 @@ public class Player : MonoBehaviour
 
     [Header("User Interface")]
     [SerializeField] private Slider healthBar;
+
     [SerializeField] private Slider manaBar;
 
     private GameObject LocalChest = null;
@@ -53,6 +73,7 @@ public class Player : MonoBehaviour
     private PlayerInput inputActions;
     private Vector2 MoveAxis;
     private bool IsGrounded = false;
+    private bool Dead = false; // prevent repeated death sounds
 
     private void Awake()
     {
@@ -129,10 +150,27 @@ public class Player : MonoBehaviour
 
         if (Health <= 0)
         {
-            Debug.Log("Player dead");
+            if (!Dead)
+            {
+                Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+                        DeathSounds[Random.Range(0, DeathSounds.Count)],
+                        Registry.SFX_Volume * DeathAmplitude * Registry.Master_Volume,
+                        0,
+                        Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
+
+                Debug.Log("Player dead");
+
+                Dead = true;
+            }
         }
         else
         {
+            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+                    HurtSounds[Random.Range(0, HurtSounds.Count)],
+                    Registry.SFX_Volume * HurtAmplitude * Registry.Master_Volume,
+                    0,
+                    Random.Range(1.0f - HurtPitchRange, 1.0f + HurtPitchRange));
+
             Debug.Log("Player hurt");
         }
 
@@ -163,6 +201,12 @@ public class Player : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("GoldPickUp"))
         {
+            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+                    GoldPickupSounds[Random.Range(0, GoldPickupSounds.Count)],
+                    Registry.SFX_Volume * GoldPickUpAmplitude * Registry.Master_Volume,
+                    0,
+                    Random.Range(1.0f - GoldPickUpPitchRange, 1.0f + GoldPickUpPitchRange));
+
             GoldCount++;
             Destroy(other.gameObject);
         }

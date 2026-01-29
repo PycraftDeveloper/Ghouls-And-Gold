@@ -1,8 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Hurt SFX")]
+    public List<AudioClip> HurtSounds;
+
+    [Range(0, 1.0f)] public float HurtAmplitude = 1.0f;
+    [Range(0.0f, 0.15f)] public float HurtPitchRange;
+
+    [Header("Death SFX")]
+    public List<AudioClip> DeathSounds;
+
+    [Range(0, 1.0f)] public float DeathAmplitude = 1.0f;
+    [Range(0.0f, 0.15f)] public float DeathPitchRange;
+
     [Header("Melee Attack")]
     [SerializeField] private float MeleeDistance = 1.5f;
 
@@ -78,11 +91,23 @@ public class Enemy : MonoBehaviour
 
         if (Health <= 0)
         {
+            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+                    DeathSounds[Random.Range(0, DeathSounds.Count)],
+                    Registry.SFX_Volume * DeathAmplitude * Registry.Master_Volume,
+                    0,
+                    Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
+
             Debug.Log("Enemy dead");
             Destroy(gameObject);
         }
         else
         {
+            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+                    HurtSounds[Random.Range(0, HurtSounds.Count)],
+                    Registry.SFX_Volume * HurtAmplitude * Registry.Master_Volume,
+                    0,
+                    Random.Range(1.0f - HurtPitchRange, 1.0f + HurtPitchRange));
+
             Debug.Log("Enemy hurt");
         }
     }

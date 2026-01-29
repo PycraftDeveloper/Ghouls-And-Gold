@@ -104,6 +104,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54921e65635c5704fb3d088e1f8975ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HurtSounds:
+  - {fileID: 8300000, guid: e1cbeb273ac6a664c89526e171fc9314, type: 3}
+  HurtAmplitude: 1
+  HurtPitchRange: 0.15
+  DeathSounds:
+  - {fileID: 8300000, guid: a1571f57d410b43449f8d009efeb40c8, type: 3}
+  DeathAmplitude: 1
+  DeathPitchRange: 0.15
   MeleeDistance: 4
   MeleeDamage: 5
   MeleeCooldown: 0.5
