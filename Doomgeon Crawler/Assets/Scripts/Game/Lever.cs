@@ -1,61 +1,36 @@
-using System.Collections;
 using UnityEngine;
 
 public class Lever : MonoBehaviour
 {
     [SerializeField] private GameObject TargetDoor;
-    [SerializeField] private float LeverSwapTime = 0.75f;
-    private Coroutine LeverStateCoroutine;
     private bool State = false;
 
-    [SerializeField] private Quaternion EnabledOffset;
-    [SerializeField] private Quaternion DisabledOffset;
+    [SerializeField] private Sprite EnabledSprite;
+    [SerializeField] private Sprite DisabledSprite;
+    private SpriteRenderer LeverRenderer;
 
-    private IEnumerator ActivateLever()
+    private void Start()
     {
-        float Duration = 0;
-        Quaternion StartAngle = transform.localRotation;
-        while (Duration < LeverSwapTime)
-        {
-            Duration += Time.deltaTime;
-            transform.localRotation = Quaternion.Slerp(StartAngle, EnabledOffset, Duration / LeverSwapTime);
-            yield return null;
-        }
-
-        TargetDoor.SetActive(false);
-    }
-
-    private IEnumerator DeactivateLever()
-    {
-        float Duration = 0;
-        Quaternion StartAngle = transform.localRotation;
-        while (Duration < LeverSwapTime)
-        {
-            Duration += Time.deltaTime;
-            transform.localRotation = Quaternion.Slerp(StartAngle, DisabledOffset, Duration / LeverSwapTime);
-            yield return null;
-        }
-
-        TargetDoor.SetActive(true);
+        LeverRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void ChangeLeverState()
     {
-        if (LeverStateCoroutine != null)
-        {
-            StopCoroutine(LeverStateCoroutine);
-        }
-
         if (State == false)
         {
             State = true;
 
-            LeverStateCoroutine = StartCoroutine(ActivateLever());
+            LeverRenderer.sprite = EnabledSprite;
+
+            TargetDoor.SetActive(false);
         }
         else
         {
             State = false;
-            LeverStateCoroutine = StartCoroutine(DeactivateLever());
+
+            LeverRenderer.sprite = DisabledSprite;
+
+            TargetDoor.SetActive(true);
         }
     }
 }
