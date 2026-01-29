@@ -8,10 +8,14 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float MeleeDamage = 5.0f;
 
-    //[SerializeField] private float MeleeAttackFOV = 45.0f; // degrees
     [SerializeField] private float MeleeCooldown = 0.5f; // seconds
 
     private float CurrentMeleeCooldown = -1;
+
+    [Header("Line of Sight")]
+    [SerializeField] private float ViewDistance = 50.0f;
+
+    [SerializeField] private float FOV = 90.0f;
 
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
@@ -22,12 +26,12 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         playerAgent = gameObject.GetComponent<NavMeshAgent>();
+        playerAgent.updateRotation = true;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        playerAgent.destination = Registry.PlayerObject.transform.position;
         CurrentMeleeCooldown -= Time.deltaTime;
 
         if (CurrentMeleeCooldown <= 0)
@@ -42,11 +46,29 @@ public class Enemy : MonoBehaviour
                     float angle = Vector3.Angle(transform.forward, directionToTarget);
 
                     col.GetComponent<Player>().DealDamage(MeleeDamage); // attacks on all sides
-
-                    Debug.DrawRay(transform.position, directionToTarget, Color.red, 10.0f);
                 }
             }
             CurrentMeleeCooldown = MeleeCooldown;
+        }
+
+        // Field of View --------------------------------------------------------------------
+        Collider[] viewColliders = Physics.OverlapSphere(transform.position, ViewDistance);
+
+        foreach (Collider col in viewColliders)
+        {
+            if (col.CompareTag("Player"))
+            {
+                Vector3 directionToTarget = (col.transform.position - transform.position).normalized;
+                float angle = Vector3.Angle(transform.forward, directionToTarget);
+
+                bool inFront = angle <= FOV / 2f;
+                bool behind = angle >= 180f - (FOV / 2f);
+
+                if (inFront || behind)
+                {
+                    playerAgent.destination = Registry.PlayerObject.transform.position;
+                }
+            }
         }
     }
 
