@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6237768262055375593}
   - component: {fileID: 7511683921179861807}
-  - component: {fileID: 1492533329871728674}
   - component: {fileID: 4659743855066371704}
   - component: {fileID: 2973796175113519287}
   m_Layer: 0
@@ -79,29 +78,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fa93f7894decccf44bf213d4dca137c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 0.8, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1492533329871728674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5992622497745219164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6307cd46b4ad86b4095280c6650dd7d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &4659743855066371704
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -136,5 +123,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetDoor: {fileID: 0}
-  EnabledSprite: {fileID: 0}
-  DisabledSprite: {fileID: 0}
+  EnabledSprite: {fileID: 21300000, guid: fa93f7894decccf44bf213d4dca137c3, type: 3}
+  DisabledSprite: {fileID: 21300000, guid: 9840ed8938ae3dc4b92a4fe0fd193faf, type: 3}
