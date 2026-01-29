@@ -136,7 +136,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &8311049004184301724
@@ -164,4 +164,8 @@ MonoBehaviour:
   ProjectileSpellCooldown: 1
   ProjectileSpeed: 75
   ProjectileDamage: 10
+  ManaCost: 1
+  GoldCount: 0
+  ManaCount: 6
+  HealthPickUpRegenAmount: 3
   Health: 20
