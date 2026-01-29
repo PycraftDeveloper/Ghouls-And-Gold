@@ -22,7 +22,7 @@ public class Lever : MonoBehaviour
 
             LeverRenderer.sprite = EnabledSprite;
 
-            TargetDoor.SetActive(false);
+            TargetDoor.SetActive(true);
         }
         else
         {
@@ -30,7 +30,7 @@ public class Lever : MonoBehaviour
 
             LeverRenderer.sprite = DisabledSprite;
 
-            TargetDoor.SetActive(true);
+            TargetDoor.SetActive(false);
         }
     }
 }
