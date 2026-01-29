@@ -10,6 +10,7 @@ TagManager:
   - ManaPickup
   - HealthPickUp
   - ChestInteractionArea
+  - Lever
   layers:
   - Default
   - TransparentFX
