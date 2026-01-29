@@ -14414,6 +14414,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8311049004184301724, guid: efd10a288b77f0f428d60a37c83b4572, type: 3}
+      propertyPath: manaBar
+      value: 
+      objectReference: {fileID: 2002777285}
+    - target: {fileID: 8311049004184301724, guid: efd10a288b77f0f428d60a37c83b4572, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1924102640}
+    - target: {fileID: 8311049004184301724, guid: efd10a288b77f0f428d60a37c83b4572, type: 3}
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 558386831}
