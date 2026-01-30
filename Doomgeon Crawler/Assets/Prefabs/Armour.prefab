@@ -113,11 +113,11 @@ MonoBehaviour:
   DeathAmplitude: 1
   DeathPitchRange: 0.15
   MeleeDistance: 4
-  MeleeDamage: 5
+  MeleeDamage: 7
   MeleeCooldown: 0.5
   ViewDistance: 50
   FOV: 90
-  Health: 20
+  Health: 45
   deadSprite: {fileID: 3821619567288983420, guid: 7dd411dcd6e50f9438d8313962eafae5, type: 3}
 --- !u!195 &6907021194263451319
 NavMeshAgent:

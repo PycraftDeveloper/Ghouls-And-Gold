@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Menu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\CGI\CoreGameInfastructure.cs" />
     <Compile Include="Assets\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Menu\GameMenuManager.cs" />
     <Compile Include="Assets\Scripts\CGI\Registry.cs" />
     <Compile Include="Assets\Scripts\Game\ProjectileSpell.cs" />
     <Compile Include="Assets\Scripts\Game\BillboardSprites.cs" />
