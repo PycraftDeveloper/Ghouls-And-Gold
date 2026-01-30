@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class Boss : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
+    [SerializeField] private GameMenuManager gameMenuManager;
+    [SerializeField] private Slider healthBar;
 
     [SerializeField] private GameObject deadSprite;
 
@@ -54,6 +57,8 @@ public class Boss : MonoBehaviour
     {
         playerAgent = gameObject.GetComponent<NavMeshAgent>();
         playerAgent.updateRotation = true;
+
+        gameMenuManager = GameObject.FindGameObjectWithTag("Game Menu Manager").GetComponent<GameMenuManager>();
 
         CurrentEnemySpawnCountdown = Random.Range(MinTimeToSpawnEnemies, MaxTimeToSpawnEnemies);
         CurrentLazerEvaluationTime = Random.Range(MinLaserEvaluationTime, MaxLaserEvaluationTime);
@@ -137,6 +142,7 @@ public class Boss : MonoBehaviour
     public void DealDamage(float Damage)
     {
         Health -= Damage;
+        healthBar.value = Health;
 
         if (Health <= 0)
         {
@@ -147,6 +153,8 @@ public class Boss : MonoBehaviour
                     Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
 
             Debug.Log("Enemy dead");
+            gameMenuManager.ShowWinScreen();
+
             Instantiate(deadSprite, transform.position + -transform.up, transform.rotation);
             Destroy(gameObject);
         }
