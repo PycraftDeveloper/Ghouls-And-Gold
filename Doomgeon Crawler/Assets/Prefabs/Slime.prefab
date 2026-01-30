@@ -118,6 +118,7 @@ MonoBehaviour:
   ViewDistance: 50
   FOV: 90
   Health: 20
+  deadSprite: {fileID: 3821619567288983420, guid: 9b0c67e1ff7b6924f97f49c97cbec883, type: 3}
 --- !u!195 &6907021194263451319
 NavMeshAgent:
   m_ObjectHideFlags: 0
