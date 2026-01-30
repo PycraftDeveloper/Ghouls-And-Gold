@@ -153,11 +153,14 @@ public class Player : MonoBehaviour
         {
             if (!Dead)
             {
-                Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
-                        DeathSounds[Random.Range(0, DeathSounds.Count)],
-                        Registry.SFX_Volume * DeathAmplitude * Registry.Master_Volume,
-                        0,
-                        Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
+                if (Registry.CoreGameInfrastructureObject != null)
+                {
+                    Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+                            DeathSounds[Random.Range(0, DeathSounds.Count)],
+                            Registry.SFX_Volume * DeathAmplitude * Registry.Master_Volume,
+                            0,
+                            Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
+                }
 
                 Debug.Log("Player dead");
 
@@ -172,11 +175,14 @@ public class Player : MonoBehaviour
                 VolumeMultiplier = 0.1f;
             }
 
-            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+            if (Registry.CoreGameInfrastructureObject != null)
+            {
+                Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
                     HurtSounds[Random.Range(0, HurtSounds.Count)],
                     Registry.SFX_Volume * HurtAmplitude * Registry.Master_Volume * VolumeMultiplier,
                     0,
                     Random.Range(1.0f - HurtPitchRange, 1.0f + HurtPitchRange));
+            }
 
             Debug.Log("Player hurt");
         }

@@ -92,11 +92,14 @@ public class Enemy : MonoBehaviour
 
         if (Health <= 0)
         {
-            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+            if (Registry.CoreGameInfrastructureObject != null)
+            {
+                Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
                     DeathSounds[Random.Range(0, DeathSounds.Count)],
                     Registry.SFX_Volume * DeathAmplitude * Registry.Master_Volume,
                     0,
                     Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
+            }
 
             Debug.Log("Enemy dead");
             Instantiate(deadSprite, transform.position + -transform.up, transform.rotation);
@@ -104,11 +107,14 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+            if (Registry.CoreGameInfrastructureObject != null)
+            {
+                Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
                     HurtSounds[Random.Range(0, HurtSounds.Count)],
                     Registry.SFX_Volume * HurtAmplitude * Registry.Master_Volume,
                     0,
                     Random.Range(1.0f - HurtPitchRange, 1.0f + HurtPitchRange));
+            }
 
             Debug.Log("Enemy hurt");
         }

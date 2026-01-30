@@ -52,9 +52,6 @@ public class Boss : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        playerAgent = gameObject.GetComponent<NavMeshAgent>();
-        playerAgent.updateRotation = true;
-
         CurrentEnemySpawnCountdown = Random.Range(MinTimeToSpawnEnemies, MaxTimeToSpawnEnemies);
         CurrentLazerEvaluationTime = Random.Range(MinLaserEvaluationTime, MaxLaserEvaluationTime);
 
@@ -82,8 +79,8 @@ public class Boss : MonoBehaviour
 
             for (int i = 0; i < EnemiesToSpawn; i++)
             {
-                float X_Position = Random.Range(-44.0f, 44.0f);
-                float Z_Position = Random.Range(-137.0f, -101.0f);
+                float X_Position = Random.Range(-43.0f, 43.0f);
+                float Z_Position = Random.Range(-136.0f, -100.0f);
                 Instantiate(EnemyPrefab[Random.Range(0, EnemyPrefab.Length)], new Vector3(X_Position, 1.228f, Z_Position), transform.rotation);
             }
         }
@@ -115,14 +112,11 @@ public class Boss : MonoBehaviour
                 Vector3 direction = EndPos - StartPos;
                 float distance = direction.magnitude;
 
-                // Position halfway between start and end
                 lazerObject.transform.position = StartPos + direction * 0.5f;
 
-                // Rotate to face the player
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                lazerObject.transform.rotation = Quaternion.Euler(0, 0, angle);
+                Vector3 flatDirection = new Vector3(direction.x, 0f, direction.z).normalized;
+                lazerObject.transform.rotation = Quaternion.LookRotation(flatDirection, Vector3.up);
 
-                // Scale laser to match distance
                 lazerObject.transform.localScale = new Vector3(distance, LazerWidth, 1);
 
                 Registry.PlayerObject.DealDamage(DamagePerSecond * Time.deltaTime, true);
@@ -140,11 +134,14 @@ public class Boss : MonoBehaviour
 
         if (Health <= 0)
         {
-            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+            if (Registry.CoreGameInfrastructureObject != null)
+            {
+                Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
                     DeathSounds[Random.Range(0, DeathSounds.Count)],
                     Registry.SFX_Volume * DeathAmplitude * Registry.Master_Volume,
                     0,
                     Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
+            }
 
             Debug.Log("Enemy dead");
             Instantiate(deadSprite, transform.position + -transform.up, transform.rotation);
@@ -152,11 +149,14 @@ public class Boss : MonoBehaviour
         }
         else
         {
-            Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
+            if (Registry.CoreGameInfrastructureObject != null)
+            {
+                Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
                     HurtSounds[Random.Range(0, HurtSounds.Count)],
                     Registry.SFX_Volume * HurtAmplitude * Registry.Master_Volume,
                     0,
                     Random.Range(1.0f - HurtPitchRange, 1.0f + HurtPitchRange));
+            }
 
             Debug.Log("Enemy hurt");
         }
