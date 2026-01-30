@@ -81,7 +81,10 @@ public class Boss : MonoBehaviour
 
         if (CurrentEnemySpawnCountdown < 0)
         {
-            healthBar.gameObject.SetActive(true);
+            if (healthBar != null)
+            {
+                healthBar.gameObject.SetActive(true);
+            }
 
             CurrentEnemySpawnCountdown = Random.Range(MinTimeToSpawnEnemies, MaxTimeToSpawnEnemies);
             int EnemiesToSpawn = Random.Range(MinNumOfEnemiesToSpawn, MaxNumOfEnemiesToSpawn + 1);
@@ -110,7 +113,10 @@ public class Boss : MonoBehaviour
 
             if (distanceToPlayer <= Range)
             {
-                healthBar.gameObject.SetActive(true);
+                if (healthBar != null)
+                {
+                    healthBar.gameObject.SetActive(true);
+                }
 
                 FireLaser(startPos, targetPos);
             }
@@ -125,7 +131,11 @@ public class Boss : MonoBehaviour
     public void DealDamage(float Damage)
     {
         Health -= Damage;
-        healthBar.value = Health;
+
+        if (healthBar != null)
+        {
+            healthBar.value = Health;
+        }
 
         if (Health <= 0)
         {
@@ -139,7 +149,11 @@ public class Boss : MonoBehaviour
             }
 
             Debug.Log("Boss dead");
-            gameMenuManager.ShowWinScreen();
+
+            if (gameMenuManager != null)
+            {
+                gameMenuManager.ShowWinScreen();
+            }
             Instantiate(deadSprite, transform.position + -transform.up, transform.rotation);
             Destroy(gameObject);
         }
