@@ -14354,7 +14354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1736619589225284193, guid: efd10a288b77f0f428d60a37c83b4572, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 159.41
       objectReference: {fileID: 0}
     - target: {fileID: 1736619589225284193, guid: efd10a288b77f0f428d60a37c83b4572, type: 3}
       propertyPath: m_LocalRotation.w
@@ -62877,14 +62877,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7966709866038836279, guid: 7cc577149a7b44745a2e886f810df9cb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1140913493}
+      addedObject: {fileID: 1140913500}
   m_SourcePrefab: {fileID: 100100000, guid: 7cc577149a7b44745a2e886f810df9cb, type: 3}
 --- !u!1 &1140913492 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7966709866038836279, guid: 7cc577149a7b44745a2e886f810df9cb, type: 3}
   m_PrefabInstance: {fileID: 1140913491}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1140913493
+--- !u!114 &1140913500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62893,9 +62893,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1140913492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6307cd46b4ad86b4095280c6650dd7d7, type: 3}
+  m_Script: {fileID: 11500000, guid: b486e6bcf96796548b0d53aa1a2bad93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HurtSounds:
+  - {fileID: 8300000, guid: e1cbeb273ac6a664c89526e171fc9314, type: 3}
+  HurtAmplitude: 1
+  HurtPitchRange: 0.15
+  DeathSounds:
+  - {fileID: 8300000, guid: a1571f57d410b43449f8d009efeb40c8, type: 3}
+  DeathAmplitude: 1
+  DeathPitchRange: 0.15
+  MinTimeToSpawnEnemies: 20
+  MaxTimeToSpawnEnemies: 40
+  MinNumOfEnemiesToSpawn: 1
+  MaxNumOfEnemiesToSpawn: 3
+  EnemyPrefab:
+  - {fileID: 4330121752702717333, guid: fe286d09bdce0ec408ebb75095969d8a, type: 3}
+  - {fileID: 4330121752702717333, guid: 8f57ac7add681e64cbe9e3a10fc9ffe9, type: 3}
+  Range: 30
+  DamagePerSecond: 1
+  MinLazerDuration: 1
+  MaxLazerDuration: 3
+  MinLaserEvaluationTime: 5
+  MaxLaserEvaluationTime: 10
+  LaserPrefab: {fileID: 874529301568578276, guid: 6c762b11367c8844f9f214d52d97fb08, type: 3}
+  Health: 20
+  gameMenuManager: {fileID: 0}
+  healthBar: {fileID: 0}
+  deadSprite: {fileID: 0}
 --- !u!1 &1141653342
 GameObject:
   m_ObjectHideFlags: 0
