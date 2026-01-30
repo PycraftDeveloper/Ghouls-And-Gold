@@ -36,11 +36,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float MaxLaserEvaluationTime = 10.0f;
     private float CurrentLazerEvaluationTime;
     private float LazerDuration;
-    [SerializeField] private float LazerWidth = 0.2f;
-    [SerializeField] private Material LazerMaterial;
-    [SerializeField] private Sprite LazerTexture;
-    private GameObject lazerObject;
-    private SpriteRenderer lazerRenderer;
+    [SerializeField] private GameObject LaserPrefab;
 
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
@@ -54,16 +50,23 @@ public class Boss : MonoBehaviour
     {
         CurrentEnemySpawnCountdown = Random.Range(MinTimeToSpawnEnemies, MaxTimeToSpawnEnemies);
         CurrentLazerEvaluationTime = Random.Range(MinLaserEvaluationTime, MaxLaserEvaluationTime);
+    }
 
-        // initialize lazer
-        lazerObject = new GameObject("BossLazer");
-        lazerObject.transform.SetParent(transform);
+    private void FireLaser(Vector3 startPos, Vector3 targetPos)
+    {
+        Vector3 direction = (targetPos - startPos).normalized;
 
-        lazerRenderer = lazerObject.AddComponent<SpriteRenderer>();
-        lazerRenderer.sprite = LazerTexture;
-        lazerRenderer.material = LazerMaterial;
+        float yaw = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
-        lazerObject.SetActive(false);
+        GameObject laser = Instantiate(
+            LaserPrefab,
+            startPos,
+            Quaternion.Euler(-90, yaw, 0)
+        );
+
+        BossLaser laserScript = laser.GetComponent<BossLaser>();
+        laserScript.DamagePerSecond = DamagePerSecond;
+        laserScript.Direction = direction;
     }
 
     // Update is called once per frame
@@ -85,45 +88,28 @@ public class Boss : MonoBehaviour
             }
         }
 
-        if (CurrentLazerEvaluationTime < 0)
+        if (CurrentLazerEvaluationTime < 0 && LazerDuration <= 0)
         {
             LazerDuration = Random.Range(MinLazerDuration, MaxLazerDuration);
         }
 
-        if (LazerDuration >= 0)
+        if (LazerDuration > 0)
         {
             LazerDuration -= Time.deltaTime;
 
-            if (LazerDuration < 0)
-            {
-                lazerObject.SetActive(false);
-                CurrentLazerEvaluationTime = Random.Range(MinLaserEvaluationTime, MaxLaserEvaluationTime);
-            }
+            Vector3 startPos = transform.position;
+            Vector3 targetPos = Registry.PlayerObject.transform.position;
 
-            Vector3 StartPos = transform.position;
-            Vector3 EndPos = Registry.PlayerObject.transform.position;
-
-            float distanceToPlayer = Vector3.Distance(StartPos, EndPos);
+            float distanceToPlayer = Vector3.Distance(startPos, targetPos);
 
             if (distanceToPlayer <= Range)
             {
-                lazerObject.SetActive(true);
-
-                Vector3 direction = EndPos - StartPos;
-                float distance = direction.magnitude;
-
-                lazerObject.transform.position = StartPos + direction * 0.5f;
-
-                Vector3 flatDirection = new Vector3(direction.x, 0f, direction.z).normalized;
-                lazerObject.transform.rotation = Quaternion.LookRotation(flatDirection, Vector3.up);
-
-                lazerObject.transform.localScale = new Vector3(distance, LazerWidth, 1);
-
-                Registry.PlayerObject.DealDamage(DamagePerSecond * Time.deltaTime, true);
+                FireLaser(startPos, targetPos);
             }
-            else
+
+            if (LazerDuration <= 0)
             {
-                lazerObject.SetActive(false);
+                CurrentLazerEvaluationTime = Random.Range(MinLaserEvaluationTime, MaxLaserEvaluationTime);
             }
         }
     }
@@ -143,7 +129,7 @@ public class Boss : MonoBehaviour
                     Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
             }
 
-            Debug.Log("Enemy dead");
+            Debug.Log("Boss dead");
             Instantiate(deadSprite, transform.position + -transform.up, transform.rotation);
             Destroy(gameObject);
         }
@@ -158,7 +144,7 @@ public class Boss : MonoBehaviour
                     Random.Range(1.0f - HurtPitchRange, 1.0f + HurtPitchRange));
             }
 
-            Debug.Log("Enemy hurt");
+            Debug.Log("Boss hurt");
         }
     }
 }

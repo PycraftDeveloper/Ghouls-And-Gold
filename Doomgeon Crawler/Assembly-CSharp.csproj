@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Game\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\Game\Boss.cs" />
     <Compile Include="Assets\Scripts\Game\TrapProjectile.cs" />
+    <Compile Include="Assets\Scripts\Game\Lazer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
