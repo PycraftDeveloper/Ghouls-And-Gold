@@ -33645,6 +33645,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 391996805}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -56722,6 +56726,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 1394906703}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58029,6 +58037,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 1179614779}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -62026,8 +62038,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7966709866038836279, guid: 7cc577149a7b44745a2e886f810df9cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1140913493}
   m_SourcePrefab: {fileID: 100100000, guid: 7cc577149a7b44745a2e886f810df9cb, type: 3}
+--- !u!1 &1140913492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7966709866038836279, guid: 7cc577149a7b44745a2e886f810df9cb, type: 3}
+  m_PrefabInstance: {fileID: 1140913491}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1140913493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140913492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6307cd46b4ad86b4095280c6650dd7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1141653342
 GameObject:
   m_ObjectHideFlags: 0
@@ -66363,6 +66395,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 1956652541}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -67483,6 +67519,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 841223380}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -71500,6 +71540,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 1768734089}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -84776,6 +84820,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 398843157}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -92139,6 +92187,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 686371100}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -93871,6 +93923,10 @@ PrefabInstance:
       propertyPath: tripWire
       value: 
       objectReference: {fileID: 654475437}
+    - target: {fileID: 7640161273897245317, guid: caa30caaaf863114388d89c110219d49, type: 3}
+      propertyPath: projectileDirection.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
