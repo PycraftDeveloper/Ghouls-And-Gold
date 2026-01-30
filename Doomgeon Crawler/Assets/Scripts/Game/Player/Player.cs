@@ -177,6 +177,11 @@ public class Player : MonoBehaviour
         UpdateUserInterface();
     }
 
+    public void HealDamage()
+    {
+        Health = healthBar.maxValue;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

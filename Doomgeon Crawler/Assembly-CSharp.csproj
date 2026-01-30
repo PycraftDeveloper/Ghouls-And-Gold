@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Menu\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\Game\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Utility\Resolution.cs" />
+    <Compile Include="Assets\Scripts\Game\Checkpoints.cs" />
     <Compile Include="Assets\Scripts\Game\TrapProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
