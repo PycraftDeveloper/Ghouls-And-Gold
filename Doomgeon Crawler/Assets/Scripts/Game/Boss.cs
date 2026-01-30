@@ -24,7 +24,7 @@ public class Boss : MonoBehaviour
     private float CurrentEnemySpawnCountdown;
     [SerializeField] private int MinNumOfEnemiesToSpawn = 1;
     [SerializeField] private int MaxNumOfEnemiesToSpawn = 3;
-    [SerializeField] private GameObject EnemyPrefab;
+    [SerializeField] private GameObject[] EnemyPrefab;
 
     [Header("Lazer Attack")]
     [SerializeField] private float Range = 30.0f;
@@ -84,7 +84,7 @@ public class Boss : MonoBehaviour
             {
                 float X_Position = Random.Range(-44.0f, 44.0f);
                 float Z_Position = Random.Range(-137.0f, -101.0f);
-                Instantiate(EnemyPrefab, new Vector3(X_Position, 1.228f, Z_Position), transform.rotation);
+                Instantiate(EnemyPrefab[Random.Range(0, EnemyPrefab.Length)], new Vector3(X_Position, 1.228f, Z_Position), transform.rotation);
             }
         }
 
