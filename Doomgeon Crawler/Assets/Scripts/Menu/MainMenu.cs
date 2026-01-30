@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class MainMenu : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject backButton;
+
+    [Header("Audio Sliders")]
+    [SerializeField] private Slider music;
+    [SerializeField] private Slider sfx;
 
     void Start()
     {
@@ -43,5 +48,14 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    private void FixedUpdate()
+    {
+        if (settingsMenu.activeInHierarchy)
+        {
+            Registry.Music_Volume = music.value;
+            Registry.SFX_Volume = sfx.value;
+        }
     }
 }
