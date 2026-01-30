@@ -60,7 +60,7 @@ MonoBehaviour:
   - {fileID: 4558062841863603691}
   projectile: {fileID: 4927995454016137402, guid: 262005c9ccd8ade419fbd063c321d25c, type: 3}
   projectileDirection: {x: 0, y: 0, z: 0}
-  velocity: 0
+  velocity: 1
 --- !u!1 &2725035871274683275
 GameObject:
   m_ObjectHideFlags: 0
