@@ -3381,6 +3381,8 @@ MonoBehaviour:
   settingsMenu: {fileID: 608686471}
   playButton: {fileID: 1320624049}
   backButton: {fileID: 34018380}
+  music: {fileID: 1179443844}
+  sfx: {fileID: 1080692124}
 --- !u!4 &1880639670
 Transform:
   m_ObjectHideFlags: 0
@@ -3488,9 +3490,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: f0b223f84f233f54890c98ba767a7f18, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.306
   m_Pitch: 1
   Loop: 0
   Mute: 0
