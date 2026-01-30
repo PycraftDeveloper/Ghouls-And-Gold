@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
+    [SerializeField] private GameObject deadSprite;
 
     private NavMeshAgent playerAgent;
 
@@ -98,6 +99,7 @@ public class Enemy : MonoBehaviour
                     Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
 
             Debug.Log("Enemy dead");
+            Instantiate(deadSprite, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         else
