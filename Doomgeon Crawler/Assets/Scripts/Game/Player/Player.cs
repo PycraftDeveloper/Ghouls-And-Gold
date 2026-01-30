@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -144,7 +145,7 @@ public class Player : MonoBehaviour
         CurrentProjectileSpellCooldown -= Time.deltaTime;
     }
 
-    public void DealDamage(float Damage)
+    public void DealDamage(float Damage, bool IsLazer = false)
     {
         Health -= Damage;
 
@@ -165,9 +166,15 @@ public class Player : MonoBehaviour
         }
         else
         {
+            float VolumeMultiplier = 1.0f;
+            if (IsLazer)
+            {
+                VolumeMultiplier = 0.1f;
+            }
+
             Registry.CoreGameInfrastructureObject.Play_SFX_ExtendedOneShot(
                     HurtSounds[Random.Range(0, HurtSounds.Count)],
-                    Registry.SFX_Volume * HurtAmplitude * Registry.Master_Volume,
+                    Registry.SFX_Volume * HurtAmplitude * Registry.Master_Volume * VolumeMultiplier,
                     0,
                     Random.Range(1.0f - HurtPitchRange, 1.0f + HurtPitchRange));
 
