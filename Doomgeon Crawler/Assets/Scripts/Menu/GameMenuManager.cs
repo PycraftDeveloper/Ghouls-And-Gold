@@ -34,7 +34,7 @@ public class GameMenuManager : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(resumeButton);
     }
 
-    void ShowDeathScreen()
+    public void ShowDeathScreen()
     {
         deathScreen.SetActive(true);
         EventSystem.current.SetSelectedGameObject(retryButton);
@@ -45,7 +45,7 @@ public class GameMenuManager : MonoBehaviour
         SceneManager.LoadSceneAsync(1);
     }
 
-    void ShowWinScreen()
+    public void ShowWinScreen()
     {
         winScreen.SetActive(true);
         EventSystem.current.SetSelectedGameObject(winButton);

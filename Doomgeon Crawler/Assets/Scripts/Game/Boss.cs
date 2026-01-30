@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Boss : MonoBehaviour
     private float CurrentEnemySpawnCountdown;
     [SerializeField] private int MinNumOfEnemiesToSpawn = 1;
     [SerializeField] private int MaxNumOfEnemiesToSpawn = 3;
-    [SerializeField] private GameObject EnemyPrefab;
+    [SerializeField] private GameObject[] EnemyPrefab;
 
     [Header("Lazer Attack")]
     [SerializeField] private float Range = 30.0f;
@@ -44,6 +45,8 @@ public class Boss : MonoBehaviour
 
     [Header("Misc")]
     [SerializeField] private float Health = 20.0f;
+    [SerializeField] private GameMenuManager gameMenuManager;
+    [SerializeField] private Slider healthBar;
 
     [SerializeField] private GameObject deadSprite;
 
@@ -54,6 +57,8 @@ public class Boss : MonoBehaviour
     {
         playerAgent = gameObject.GetComponent<NavMeshAgent>();
         playerAgent.updateRotation = true;
+
+        gameMenuManager = GameObject.FindGameObjectWithTag("Game Menu Manager").GetComponent<GameMenuManager>();
 
         CurrentEnemySpawnCountdown = Random.Range(MinTimeToSpawnEnemies, MaxTimeToSpawnEnemies);
         CurrentLazerEvaluationTime = Random.Range(MinLaserEvaluationTime, MaxLaserEvaluationTime);
@@ -84,7 +89,7 @@ public class Boss : MonoBehaviour
             {
                 float X_Position = Random.Range(-44.0f, 44.0f);
                 float Z_Position = Random.Range(-137.0f, -101.0f);
-                Instantiate(EnemyPrefab, new Vector3(X_Position, 1.228f, Z_Position), transform.rotation);
+                Instantiate(EnemyPrefab[Random.Range(0, EnemyPrefab.Length)], new Vector3(X_Position, 1.228f, Z_Position), transform.rotation);
             }
         }
 
@@ -112,6 +117,8 @@ public class Boss : MonoBehaviour
             {
                 lazerObject.SetActive(true);
 
+                healthBar.gameObject.SetActive(true);
+
                 Vector3 direction = EndPos - StartPos;
                 float distance = direction.magnitude;
 
@@ -137,6 +144,7 @@ public class Boss : MonoBehaviour
     public void DealDamage(float Damage)
     {
         Health -= Damage;
+        healthBar.value = Health;
 
         if (Health <= 0)
         {
@@ -147,6 +155,8 @@ public class Boss : MonoBehaviour
                     Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
 
             Debug.Log("Enemy dead");
+            gameMenuManager.ShowWinScreen();
+
             Instantiate(deadSprite, transform.position + -transform.up, transform.rotation);
             Destroy(gameObject);
         }
