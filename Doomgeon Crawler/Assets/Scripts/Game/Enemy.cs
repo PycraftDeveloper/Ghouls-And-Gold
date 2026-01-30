@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
                     Random.Range(1.0f - DeathPitchRange, 1.0f + DeathPitchRange));
 
             Debug.Log("Enemy dead");
-            Instantiate(deadSprite, transform.position, transform.rotation);
+            Instantiate(deadSprite, transform.position + -transform.up, transform.rotation);
             Destroy(gameObject);
         }
         else
