@@ -68,18 +68,21 @@
     <Compile Include="Assets\Scripts\CGI\Registry.cs" />
     <Compile Include="Assets\Scripts\Game\ProjectileSpell.cs" />
     <Compile Include="Assets\Scripts\Game\BillboardSprites.cs" />
+    <Compile Include="Assets\Scripts\Game\Tripwire.cs" />
     <Compile Include="Assets\Scripts\Game\Teleporter.cs" />
     <Compile Include="Assets\Scripts\Game\MinimapCamera.cs" />
     <Compile Include="Assets\Scripts\Game\Lever.cs" />
     <Compile Include="Assets\Scripts\Game\Enemy.cs" />
     <Compile Include="Assets\Scripts\CGI\SavedDataManager.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerLook.cs" />
+    <Compile Include="Assets\Scripts\Game\Traps.cs" />
     <Compile Include="Assets\Scripts\CGI\ExtendedOneShot.cs" />
     <Compile Include="Assets\Scripts\Game\Chest.cs" />
     <Compile Include="Assets\Scripts\Utility\DS4.cs" />
     <Compile Include="Assets\Scripts\Menu\SettingsMenu.cs" />
     <Compile Include="Assets\Scripts\Game\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Utility\Resolution.cs" />
+    <Compile Include="Assets\Scripts\Game\TrapProjectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
