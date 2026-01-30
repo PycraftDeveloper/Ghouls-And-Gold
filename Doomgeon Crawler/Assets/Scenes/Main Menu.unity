@@ -3381,6 +3381,8 @@ MonoBehaviour:
   settingsMenu: {fileID: 608686471}
   playButton: {fileID: 1320624049}
   backButton: {fileID: 34018380}
+  music: {fileID: 1179443844}
+  sfx: {fileID: 1080692124}
 --- !u!4 &1880639670
 Transform:
   m_ObjectHideFlags: 0
