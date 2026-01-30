@@ -117,6 +117,8 @@ public class Boss : MonoBehaviour
             {
                 lazerObject.SetActive(true);
 
+                healthBar.gameObject.SetActive(true);
+
                 Vector3 direction = EndPos - StartPos;
                 float distance = direction.magnitude;
 
