@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("GameScene");
+        SceneManager.LoadSceneAsync("Game Scene");
     }
 
     public void OpenSettingsMenu()
