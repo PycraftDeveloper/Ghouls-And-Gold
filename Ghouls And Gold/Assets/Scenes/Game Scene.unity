@@ -22753,7 +22753,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 2d0fee984751da9498f7f31d38e8824d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 58470b83442de334da98af97f5f85c59, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &508394094
 GameObject:
@@ -76726,7 +76726,7 @@ GameObject:
   - component: {fileID: 1591920359}
   m_Layer: 0
   m_Name: Menu Manager
-  m_TagString: Untagged
+  m_TagString: GameMenuManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
