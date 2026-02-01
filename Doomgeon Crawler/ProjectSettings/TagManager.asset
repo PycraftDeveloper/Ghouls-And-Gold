@@ -11,6 +11,8 @@ TagManager:
   - HealthPickUp
   - ChestInteractionArea
   - Lever
+  - Portal
+  - GameMenuManager
   layers:
   - Default
   - TransparentFX
