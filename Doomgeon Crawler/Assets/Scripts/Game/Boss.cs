@@ -53,7 +53,7 @@ public class Boss : MonoBehaviour
         CurrentEnemySpawnCountdown = Random.Range(MinTimeToSpawnEnemies, MaxTimeToSpawnEnemies);
         CurrentLazerEvaluationTime = Random.Range(MinLaserEvaluationTime, MaxLaserEvaluationTime);
 
-        gameMenuManager = GameObject.FindGameObjectWithTag("Game Menu Manager").GetComponent<GameMenuManager>();
+        gameMenuManager = GameObject.FindGameObjectWithTag("GameMenuManager").GetComponent<GameMenuManager>();
     }
 
     private void FireLaser(Vector3 startPos, Vector3 targetPos)
