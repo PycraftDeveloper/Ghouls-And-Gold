@@ -2,6 +2,7 @@
 _A University of Northampton `Winter Game Jam` game._
 
 ## Links
+[Original GitHub (private at time of writing)](https://github.com/CatChristina/Doomgeon-Crawler) <br>
 [Itch site](https://lotuspocusx.itch.io/ghouls-and-gold)
 
 ## Awards
